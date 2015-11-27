@@ -43,3 +43,21 @@ $ testArray1 = array("A"=>"甲","B"=>"乙","C"=>"丙");
 $ testArray2 = array("C"=>"丁","D"=>"戊","E"=>"己");
 $ testArray3 = array_merge_recursive($testArray1,$ testArray2);
 print_r($ testArray3);//顯示「Array([A]=>甲[B]=>乙[C]=>Array([0]=>丙 [1]=>丁)[D]=>戊[E]=>己)」→由於兩個陣列都有索引鍵「C」，但合併後值唯一多維陣列
+
+陣列的相關應用還有很多，像array_chunk()、array_combine()、compact()等
+#指派陣列元素成為變數
+
+1.list($變數1,$變數2,...變數n)=陣列
+$testArray = array("甲","乙","丙");
+list($a,$b,$c) = $testArray;//顯示$a=甲,$b=乙,$c=丙
+list($a,$b) = $testArray;//顯示$a=甲,$b=乙
+list($a,,$b) = $testArray;//顯示$a=甲,$b丙
+
+2.each()→當遇到字串設定索引鍵的結合式陣列時，list()只能設定兩個變數來取得索引鍵及值，並搭配each()來取的所有陣列內容
+$testArray = array("A"=>"甲","B"=>"乙","C"=>"丙");
+while(list($a,$b) = each($testArray))
+{
+echo "$a的值為$b";
+}
+在while迴圈每執行一次,陣列的紀錄指標及往下一筆移動,並將索引鍵與值代入list(),ˊ達資料底端時會回傳邏輯值False即跳出迴圈,陣列記錄指標會停留在最後一筆。
+list()搭配each()跳出迴圈後,若要將指標返回陣列頂端,可使用reset($陣列)回到第一筆。
