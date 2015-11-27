@@ -12,4 +12,34 @@ EX：$s['學生一']['國文'] = 78;
 Ex：$s = array(array(78,85,90),array(62,75,98),array(95,76,82));
 //因為沒有設定索引鍵，所以預設由0開始，若要調出第二個學生的國文成績
 echo $s[1][0];
-
+#foreach
+foreach(陣列名稱 as 自訂變數名稱)
+{
+    執行的程式內容;
+}
+//doreach會使用陣列內的陣列元素個數做為執行次數，依序執行完畢才會結束迴圈或往下執行
+//也可以用for迴圈來達成，但最重要的是for不會取得陣列的元素長度，此時可以搭配count()來取的需執行的次數
+Ex：
+<?php
+$season = array('春', '夏', '秋', '冬'); 
+$aNum = count($season);
+echo "每年的四季分別為：";
+for($i=0;$i<$aNum;$i++)
+{
+	echo $season[$i];
+}
+?>
+#陣列相關函式應用
+1.print_r(變數)→可顯示指定陣列或物件內容，只能指定一個變數
+2.car_dump(變數1[,變數2][...變數n])→可以顯示指定的陣列或物件的資料型別、大小及內容，且能指定多個變數
+3.array_merge(陣列1,陣列2,...陣列n)
+$ testArray1 = array("A"=>"甲","B"=>"乙","C"=>"丙");
+$ testArray2 = array("C"=>"丁","D"=>"戊","E"=>"己");
+$ testArray3 = array_merge($testArray1,$ testArray2);
+print_r($ testArray3);//顯示「Array([A]=>甲[B]=>乙[C]=>丁[D]=>戊[E]=>己)」→由於兩個陣列都有索引鍵「C」，但合併後值為丁
+若要相同所以值不被合併，且兩個內容值都顯示出，要用另一函式：
+4.array_merge_recursive(陣列1,陣列2,...陣列n)
+$ testArray1 = array("A"=>"甲","B"=>"乙","C"=>"丙");
+$ testArray2 = array("C"=>"丁","D"=>"戊","E"=>"己");
+$ testArray3 = array_merge_recursive($testArray1,$ testArray2);
+print_r($ testArray3);//顯示「Array([A]=>甲[B]=>乙[C]=>Array([0]=>丙 [1]=>丁)[D]=>戊[E]=>己)」→由於兩個陣列都有索引鍵「C」，但合併後值唯一多維陣列
