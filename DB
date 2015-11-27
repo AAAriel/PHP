@@ -1,0 +1,5 @@
+phpMyAdmin是一套使用PHP開發的管理程式，採取網頁型態的管理頁面，所以若要正確執行這個管理程式必須要在網站伺服器上安裝PHP與MySQL
+#同樣是使用utf8方式編碼,utf8_general_ci與utf8_unicode_ci有什麼不同?
+utf8_general_ci在轉換時速度較快;utf8_unicode_ci在轉換時較精準。
+若在進行中文編碼層面上，盡量用utf8_unicode_ci，精準度上面會有所差異。
+
